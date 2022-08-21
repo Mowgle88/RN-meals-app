@@ -3,10 +3,11 @@ import React from 'react';
 
 interface CategoryGridTileProps {
   title: string,
-  color: string
+  color: string,
+  onPress: () => void
 }
 
-export default function CategoryGridTile({ title, color }: CategoryGridTileProps) {
+export default function CategoryGridTile({ title, color, onPress }: CategoryGridTileProps) {
   return (
     <View style={styles.gridItem}>
       <Pressable
@@ -14,6 +15,7 @@ export default function CategoryGridTile({ title, color }: CategoryGridTileProps
         style={({ pressed }) => [
           styles.button, pressed ? styles.buttonPressed : null
         ]}
+        onPress={onPress}
       >
         <View style={[styles.innerContainer, { backgroundColor: color }]}>
           <Text style={styles.title}>{title}</Text>
