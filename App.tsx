@@ -10,7 +10,7 @@ import Category from './models/category';
 
 export type RootStackParamList = {
   MealsCategories: { CATEGORIES: Category[] };
-  MealsOverview: undefined;
+  MealsOverview: { categoryId: string };
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
