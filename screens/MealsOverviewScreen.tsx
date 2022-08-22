@@ -11,9 +11,9 @@ interface renderItemProps {
   item: Meal
 }
 
-type Props = NativeStackScreenProps<RootStackParamList, 'MealsOverview'>;
+type MealsOverviewScreenProps = NativeStackScreenProps<RootStackParamList, 'MealsOverview'>;
 
-export default function MealsOverviewScreen({ route, navigation }: Props) {
+export default function MealsOverviewScreen({ route, navigation }: MealsOverviewScreenProps) {
   const catId = route.params.categoryId;
 
   const displayedMeals = MEALS.filter((mealItem) => {
@@ -34,6 +34,7 @@ export default function MealsOverviewScreen({ route, navigation }: Props) {
     const mealItem = itemData.item;
 
     const mealItemProps = {
+      id: mealItem.id,
       title: mealItem.title,
       imageUrl: mealItem.imageUrl,
       duration: mealItem.duration,

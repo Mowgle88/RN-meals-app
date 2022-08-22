@@ -11,9 +11,9 @@ interface renderCategoryItemProps {
   item: Category
 }
 
-type Props = NativeStackScreenProps<RootStackParamList, 'MealsCategories'>;
+type CategoriesScreenProps = NativeStackScreenProps<RootStackParamList, 'MealsCategories'>;
 
-export default function CategoriesScreen({ navigation }: Props) {
+export default function CategoriesScreen({ navigation }: CategoriesScreenProps) {
 
   function renderCategoryItem(itemData: renderCategoryItemProps) {
     function pressHandler() {
