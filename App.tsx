@@ -7,10 +7,12 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import CategoriesScreen from './screens/CategoriesScreen';
 import MealsOverviewScreen from './screens/MealsOverviewScreen';
 import Category from './models/category';
+import MealDetailScreen from './screens/MealDetailScreen';
 
 export type RootStackParamList = {
-  MealsCategories: { CATEGORIES: Category[] };
-  MealsOverview: { categoryId: string };
+  MealsCategories: { CATEGORIES: Category[] },
+  MealsOverview: { categoryId: string, title: string, color: string },
+  MealDetail: { mealId: string }
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -18,11 +20,39 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 export default function App() {
   return (
     <>
-      <StatusBar style='dark' />
+      <StatusBar style='light' />
       <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen name='MealsCategories' component={CategoriesScreen} />
-          <Stack.Screen name='MealsOverview' component={MealsOverviewScreen} />
+        <Stack.Navigator
+          screenOptions={{
+            headerStyle: { backgroundColor: '#382e24' },
+            headerTintColor: '#f0f0f0',
+            contentStyle: { backgroundColor: '#cbb1a1' }
+          }}
+        >
+          <Stack.Screen
+            name='MealsCategories'
+            component={CategoriesScreen}
+            options={{
+              title: 'All Categories',
+            }}
+          />
+          <Stack.Screen
+            name='MealsOverview'
+            component={MealsOverviewScreen}
+          // options={({ route, navigation }) => {
+          //   const title = route.params.title;
+          //   const color = route.params.color;
+          //   return {
+          //     title: title,
+          //     headerStyle: { backgroundColor: color },
+          //     headerTintColor: '#382e24',
+          //   }
+          // }}
+          />
+          <Stack.Screen
+            name='MealDetail'
+            component={MealDetailScreen}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </>
