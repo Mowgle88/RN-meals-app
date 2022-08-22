@@ -1,10 +1,11 @@
-import { FlatList, StyleSheet, Text, View } from 'react-native';
+import { FlatList, StyleSheet, View } from 'react-native';
 import React from 'react';
 
 import { MEALS } from '../data/dummy-data';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../App';
 import Meal from '../models/meal';
+import MealItem from '../components/MealItem';
 
 interface renderItemProps {
   item: Meal
@@ -20,9 +21,7 @@ export default function MealsOverviewScreen({ route }: Props) {
   });
 
   function renderItem(itemData: renderItemProps) {
-    return <View>
-      <Text>{itemData.item.title}</Text>
-    </View>
+    return <MealItem title={itemData.item.title}></MealItem>
   }
 
   return (
