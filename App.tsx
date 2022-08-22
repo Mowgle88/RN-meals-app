@@ -10,7 +10,7 @@ import Category from './models/category';
 
 export type RootStackParamList = {
   MealsCategories: { CATEGORIES: Category[] };
-  MealsOverview: { categoryId: string };
+  MealsOverview: { categoryId: string, title: string, color: string };
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -34,7 +34,19 @@ export default function App() {
               title: 'All Categories',
             }}
           />
-          <Stack.Screen name='MealsOverview' component={MealsOverviewScreen} />
+          <Stack.Screen
+            name='MealsOverview'
+            component={MealsOverviewScreen}
+          // options={({ route, navigation }) => {
+          //   const title = route.params.title;
+          //   const color = route.params.color;
+          //   return {
+          //     title: title,
+          //     headerStyle: { backgroundColor: color },
+          //     headerTintColor: '#382e24',
+          //   }
+          // }}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </>
