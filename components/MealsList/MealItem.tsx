@@ -1,8 +1,8 @@
 import { Image, Platform, Pressable, StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
-import { RootStackParamList } from '../App';
-import MealDetails from './MealDetails';
+import { RootStackParamList } from '../../App';
+import MealDetails from '../MealDetails';
 
 interface MealItemProps {
   id: string,
