@@ -3,7 +3,7 @@ import React from 'react';
 import { Ionicons } from '@expo/vector-icons';
 
 interface IconButtonProps {
-  icon: 'star',
+  icon: 'star' | 'star-outline',
   color: string,
   onPress: () => void
 }

@@ -11,6 +11,7 @@ import CategoriesScreen from './screens/CategoriesScreen';
 import MealsOverviewScreen from './screens/MealsOverviewScreen';
 import MealDetailScreen from './screens/MealDetailScreen';
 import FavoritesScreen from './screens/FavoritesScreen';
+import FavoritesContextProvider from './store/context/favorites-context';
 
 export type RootStackParamList = {
   Drawer: undefined,
@@ -59,44 +60,46 @@ export default function App() {
   return (
     <>
       <StatusBar style='light' />
-      <NavigationContainer>
-        <Stack.Navigator
-          screenOptions={{
-            headerStyle: { backgroundColor: '#382e24' },
-            headerTintColor: '#f0f0f0',
-            contentStyle: { backgroundColor: '#cbb1a1' }
-          }}
-        >
-          <Stack.Screen
-            name='Drawer'
-            component={DrawerNavigator}
-            options={{
-              // title: 'All Categories',
-              headerShown: false
+      <FavoritesContextProvider>
+        <NavigationContainer>
+          <Stack.Navigator
+            screenOptions={{
+              headerStyle: { backgroundColor: '#382e24' },
+              headerTintColor: '#f0f0f0',
+              contentStyle: { backgroundColor: '#cbb1a1' }
             }}
-          />
-          <Stack.Screen
-            name='MealsOverview'
-            component={MealsOverviewScreen}
-          // options={({ route, navigation }) => {
-          //   const title = route.params.title;
-          //   const color = route.params.color;
-          //   return {
-          //     title: title,
-          //     headerStyle: { backgroundColor: color },
-          //     headerTintColor: '#382e24',
-          //   }
-          // }}
-          />
-          <Stack.Screen
-            name='MealDetail'
-            component={MealDetailScreen}
-            options={{
-              title: 'About the Meal',
-            }}
-          />
-        </Stack.Navigator>
-      </NavigationContainer>
+          >
+            <Stack.Screen
+              name='Drawer'
+              component={DrawerNavigator}
+              options={{
+                // title: 'All Categories',
+                headerShown: false
+              }}
+            />
+            <Stack.Screen
+              name='MealsOverview'
+              component={MealsOverviewScreen}
+            // options={({ route, navigation }) => {
+            //   const title = route.params.title;
+            //   const color = route.params.color;
+            //   return {
+            //     title: title,
+            //     headerStyle: { backgroundColor: color },
+            //     headerTintColor: '#382e24',
+            //   }
+            // }}
+            />
+            <Stack.Screen
+              name='MealDetail'
+              component={MealDetailScreen}
+              options={{
+                title: 'About the Meal',
+              }}
+            />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </FavoritesContextProvider>
     </>
   );
 }
