@@ -1,14 +1,14 @@
 import { createContext, ReactNode, useState } from "react";
 
 interface FavoritesContextInterface {
-  ids: string[] | never[],
+  ids: string[],
   addFavorite: (id: string) => void,
   removeFavorite: (id: string) => void
 }
 
 interface FavoritesContextProvider {
   children?: ReactNode | undefined,
-  value: FavoritesContextInterface;
+  // value: FavoritesContextInterface;
 }
 
 export const FavoritesContext = createContext<FavoritesContextInterface>({
@@ -35,7 +35,9 @@ export default function FavoritesContextProvider({ children }: FavoritesContextP
   }
 
   return (
-    <FavoritesContext.Provider value={value}>{children}</FavoritesContext.Provider>
+    <FavoritesContext.Provider value={value}>
+      {children}
+    </FavoritesContext.Provider>
   )
 
 }
